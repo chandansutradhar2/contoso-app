@@ -7,6 +7,7 @@ export class ProductController {
 
     @Post('/add')
     addProduct(@Body() body: { prodTitle: string, prodDesc: string, prodPrice: number }) {
+        console.log(body);
         const prodId = Date.now().toString();
         const newProduct = {
             id: prodId,
