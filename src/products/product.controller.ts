@@ -1,4 +1,4 @@
-import { Controller, Post, Get } from "@nestjs/common";
+import { Controller, Post, Get, Body } from "@nestjs/common";
 
 
 @Controller('products')
@@ -6,9 +6,9 @@ export class ProductsController {
     private products = [];
 
     @Post('/add')
-    addProduct(prodTitle: string, prodDesc: string, prodPrice: number) {
-        const prodId = new Date().toString();
-        const newProduct = { id: prodId, title: prodTitle, description: prodDesc, price: prodPrice };
+    addProduct(@Body() body: { prodTitle: string, prodDesc: string, prodPrice: number }) {
+        const prodId = Date.now().toString();
+        const newProduct = body;
         this.products.push(newProduct);
         return prodId;
     }
