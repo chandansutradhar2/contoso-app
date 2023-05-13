@@ -2,7 +2,7 @@ import { Controller, Post, Get, Body } from "@nestjs/common";
 
 
 @Controller('products')
-export class ProductsController {
+export class ProductController {
     private products = [];
 
     @Post('/add')
