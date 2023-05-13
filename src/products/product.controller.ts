@@ -17,8 +17,8 @@ export class ProductController {
     }
 
     @Get('/getAll')
-    getAllProduct() {
-        return [];
+    async getAllProduct() {
+        return await this.productService.getAllProduct();
     }
 
 

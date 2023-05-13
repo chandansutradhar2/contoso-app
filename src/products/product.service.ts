@@ -5,6 +5,7 @@ import { CreateProductDTO } from "./dtos/create-product.dto";
 @Injectable()
 export class ProductService {
 
+
     constructor(private readonly neo4jService: Neo4jService) {
         console.log("ProductService constructor");
     }
@@ -24,4 +25,9 @@ export class ProductService {
         return id;
     }
 
+    async getAllProduct() {
+        const results = await this.neo4jService.read(`MATCH (q:Product) RETURN q`);
+        return results.records.map(r => r.get('q').properties);
+
+    }
 }
