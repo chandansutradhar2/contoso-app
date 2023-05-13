@@ -1,29 +1,24 @@
 import { Controller, Post, Get, Body } from "@nestjs/common";
 import { CreateProductDTO } from "./dtos/create-product.dto";
 import { UpdateProductQtyDTO } from "./dtos/update-qty.dto";
+import { ProductService } from "./product.service";
 
 
 @Controller('products')
 export class ProductController {
-    private products = [];
+
+    constructor(private readonly productService: ProductService) {
+    }
 
     @Post('/add')
-    addProduct(@Body() body: CreateProductDTO) {
+    async addProduct(@Body() body: CreateProductDTO) {
         console.log(body);
-        const prodId = Date.now().toString();
-        const newProduct = {
-            id: prodId,
-            title: body.title,
-            description: body.description,
-            price: body.price
-        };
-        this.products.push(newProduct);
-        return prodId;
+       return await this.productService.addProduct(body);
     }
 
     @Get('/getAll')
     getAllProduct() {
-        return [...this.products];
+        return [];
     }
 
 

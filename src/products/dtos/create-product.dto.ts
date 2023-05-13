@@ -1,7 +1,7 @@
 import { Length, IsNotEmpty, IsNumber, IsBoolean } from "class-validator";
 
 export class CreateProductDTO {
-    prodId?: string;
+    id?: string;
 
     @IsNotEmpty({
 
