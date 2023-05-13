@@ -8,7 +8,12 @@ export class ProductController {
     @Post('/add')
     addProduct(@Body() body: { prodTitle: string, prodDesc: string, prodPrice: number }) {
         const prodId = Date.now().toString();
-        const newProduct = body;
+        const newProduct = {
+            id: prodId,
+            title: body.prodTitle,
+            description: body.prodDesc,
+            price: body.prodPrice
+        };
         this.products.push(newProduct);
         return prodId;
     }
