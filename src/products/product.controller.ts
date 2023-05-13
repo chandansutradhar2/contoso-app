@@ -27,6 +27,7 @@ export class ProductController {
     }
 
 
+    @Post('/updateQty')
     updateProductQty(@Body() body: UpdateProductQtyDTO) {
 
     }
