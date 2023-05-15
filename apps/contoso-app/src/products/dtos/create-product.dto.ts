@@ -1,8 +1,13 @@
+import { ApiProperty } from "@nestjs/swagger";
 import { Length, IsNotEmpty, IsNumber, IsBoolean } from "class-validator";
 
 export class CreateProductDTO {
+
+
     id?: string;
 
+
+    @ApiProperty()
     @IsNotEmpty({
 
     })
@@ -11,18 +16,22 @@ export class CreateProductDTO {
     })
     title: string;
 
+    @ApiProperty()
     @Length(3, 100)
     description: string;
 
+    @ApiProperty()
     @IsNotEmpty({
         message: 'Price is required'
     })
     @IsNumber()
     price: number
 
+    @ApiProperty()
     @IsBoolean()
     outOfStock: boolean;
 
+    @ApiProperty()
     @IsNumber()
     quantity: number;
 }
