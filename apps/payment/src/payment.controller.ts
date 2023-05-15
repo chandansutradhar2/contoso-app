@@ -13,7 +13,7 @@ export class PaymentController {
 
 
   @MessagePattern({ cmd: 'makeUPIPayment' })
-  makeUPIPayment({ orderId, orderTotal }) {
+ async makeUPIPayment({ orderId, orderTotal }) {
     //todo: initiate switch communication to make payment
 
     console.log(orderId, orderTotal)
