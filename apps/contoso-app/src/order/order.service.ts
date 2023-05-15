@@ -22,8 +22,6 @@ export class OrderService {
     }
     const result = await this.neo.write(query, params);
     console.log(result);
-
-    
     return result;
 
   }
