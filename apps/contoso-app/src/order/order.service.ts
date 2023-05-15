@@ -11,6 +11,7 @@ export class OrderService {
   }
 
   async create(dto: CreateOrderDto) {
+
     const query = `CREATE (o:Order {id: $id, userId: $userId,
       productIds: $productIds, orderDate: $orderDate,
       orderStatus: $orderStatus, orderTotal: $orderTotal,
@@ -21,6 +22,8 @@ export class OrderService {
     }
     const result = await this.neo.write(query, params);
     console.log(result);
+
+    
     return result;
 
   }
