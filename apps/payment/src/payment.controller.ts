@@ -13,8 +13,11 @@ export class PaymentController {
 
 
   @MessagePattern({ cmd: 'makeUPIPayment' })
-  makeUPIPayment() {
+  makeUPIPayment({ orderId, orderTotal }) {
     //todo: initiate switch communication to make payment
+
+    console.log(orderId, orderTotal)
+
     return { status: 'success', message: 'UPI Payment Successful' };
   }
 
